@@ -21,6 +21,9 @@ namespace ToyRobotSimulator.Services.Commands
             _dir = dir;
         }
 
-        public void Execute() => _robot.Place(_pos, _dir);
+        public void Execute()
+        {
+            _robot.Place(_pos, _dir);
+        }
     }
 }

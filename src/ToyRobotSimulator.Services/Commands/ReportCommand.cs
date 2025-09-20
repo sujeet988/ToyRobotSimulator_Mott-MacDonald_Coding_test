@@ -23,7 +23,10 @@ namespace ToyRobotSimulator.Services.Commands
         {
             var report = _robot.Report();
             if (!string.IsNullOrWhiteSpace(report))
+            {
                 _output(report);
+            }
+                
         }
     }
 }

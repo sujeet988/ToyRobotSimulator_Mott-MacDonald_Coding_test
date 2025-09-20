@@ -12,7 +12,10 @@ namespace ToyRobotSimulator.Services.Implementation
     {
         private readonly ITable _table;
 
-        public Robot(ITable table) => _table = table;
+        public Robot(ITable table)
+        {
+            _table = table;
+        }
 
         public bool IsPlaced { get; private set; }
         public Position? Position { get; private set; }
@@ -32,7 +35,10 @@ namespace ToyRobotSimulator.Services.Implementation
         {
             if (!IsPlaced || Facing == null || Position == null) return;
             var newPos = Position.Move(Facing.Value);
-            if (_table.IsValidPosition(newPos)) Position = newPos;
+            if (_table.IsValidPosition(newPos))
+            {
+                Position = newPos;
+            }
         }
 
         public void Left()
@@ -50,7 +56,10 @@ namespace ToyRobotSimulator.Services.Implementation
 
         public void Right()
         {
-            if (!IsPlaced || Facing == null) return;
+            if (!IsPlaced || Facing == null)
+            {
+                return;
+            }
             Facing = Facing switch
             {
                 Direction.North => Direction.East,
@@ -61,9 +70,11 @@ namespace ToyRobotSimulator.Services.Implementation
             };
         }
 
-        public string Report() =>
-            IsPlaced && Position != null && Facing != null
+        public string Report()
+        {
+           return IsPlaced && Position != null && Facing != null
                 ? $"{Position.X},{Position.Y},{Facing.ToString().ToUpper()}"
                 : string.Empty;
+        }
     }
 }

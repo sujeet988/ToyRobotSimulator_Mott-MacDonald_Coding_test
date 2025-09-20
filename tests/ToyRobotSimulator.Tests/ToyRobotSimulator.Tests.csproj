@@ -8,4 +8,9 @@
     <UseVSTest>true</UseVSTest>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ToyRobotSimulator.Core\ToyRobotSimulator.Core.csproj" />
+    <ProjectReference Include="..\..\src\ToyRobotSimulator.Services\ToyRobotSimulator.Services.csproj" />
+  </ItemGroup>
+
 </Project>

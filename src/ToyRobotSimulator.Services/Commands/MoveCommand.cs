@@ -10,7 +10,13 @@ namespace ToyRobotSimulator.Services.Commands
     public class MoveCommand : ICommand
     {
         private readonly IRobot _robot;
-        public MoveCommand(IRobot robot) => _robot = robot;
-        public void Execute() => _robot.Move();
+        public MoveCommand(IRobot robot)
+        {
+            _robot = robot;
+        }
+        public void Execute()
+        {
+            _robot.Move();
+        }
     }
 }

@@ -19,7 +19,11 @@ namespace ToyRobotSimulator.Services.Implementation
             _height = height;
         }
 
-        public bool IsValidPosition(Position pos) =>
-            pos.X >= 0 && pos.Y >= 0 && pos.X < _width && pos.Y < _height;
+        public bool IsValidPosition(Position pos)
+        {
+            return pos.X >= 0 && pos.Y >= 0 && pos.X < _width && pos.Y < _height;
+
+        }
+          
     }
 }
