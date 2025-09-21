@@ -59,7 +59,7 @@ dotnet test
 
 ## Tech & Design
 
-- C# .NET 7
+- C# .NET 8.0+
 
 - MSTest for testing
 
