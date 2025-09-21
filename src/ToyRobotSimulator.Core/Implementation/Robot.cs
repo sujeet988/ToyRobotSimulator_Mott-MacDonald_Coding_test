@@ -43,38 +43,32 @@ namespace ToyRobotSimulator.Core.Implementation
 
         public void Left()
         {
-            if (!IsPlaced) return;
-            Position.Facing = (Direction)(((int)Position.Facing + 3) % 4); // rotate left
-
-            //
-            //if (!IsPlaced || Facing == null) return;
-            //Facing = Facing switch
-            //{
-            //    Direction.North => Direction.West,
-            //    Direction.West => Direction.South,
-            //    Direction.South => Direction.East,
-            //    Direction.East => Direction.North,
-            //    _ => Facing
-            //};
+            if (!IsPlaced)
+            {
+                return;
+            }
+            //Position.Facing = (Direction)(((int)Position.Facing + 3) % 4); // rotate left
+            switch (Position.Facing)
+            {
+                case Direction.North: Position.Facing = Direction.West; break;
+                case Direction.West: Position.Facing = Direction.South; break;
+                case Direction.South: Position.Facing = Direction.East; break;
+                case Direction.East: Position.Facing = Direction.North; break;
+            }
         }
 
         public void Right()
         {
             if (!IsPlaced) return;
-            Position.Facing = (Direction)(((int)Position.Facing + 1) % 4); // rotate right
+            //  Position.Facing = (Direction)(((int)Position.Facing + 1) % 4); // rotate right
 
-            //if (!IsPlaced || Facing == null)
-            //{
-            //    return;
-            //}
-            //Facing = Facing switch
-            //{
-            //    Direction.North => Direction.East,
-            //    Direction.East => Direction.South,
-            //    Direction.South => Direction.West,
-            //    Direction.West => Direction.North,
-            //    _ => Facing
-            //};
+            switch (Position.Facing)
+            {
+                case Direction.North: Position.Facing = Direction.East; break;
+                case Direction.East: Position.Facing = Direction.South; break;
+                case Direction.South: Position.Facing = Direction.West; break;
+                case Direction.West: Position.Facing = Direction.North; break;
+            }
         }
 
         public string Report()

@@ -42,7 +42,7 @@ namespace ToyRobotSimulator.Tests
         {
             robot.Place(new Position(0, 4, Direction.North), table);
             robot.Move();
-            Assert.AreEqual("0,4,N", robot.Report());
+            Assert.AreEqual("0,4,North", robot.Report());
         }
 
         [TestMethod]
