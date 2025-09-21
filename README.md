@@ -28,7 +28,7 @@ The robot can be placed, moved, rotated, and report its position, while ensuring
 
 ---
 
-## Run the App
+## Run the ToyRobotSimulator.Client App
 
 dotnet build
 dotnet run --project ToyRobotSimulator.Client
@@ -38,7 +38,6 @@ dotnet run --project ToyRobotSimulator.Client
 **Case 1**
 
 **Input Paramters for Client Application:**
-```text
 PLACE 0,0,NORTH
 MOVE
 REPORT
