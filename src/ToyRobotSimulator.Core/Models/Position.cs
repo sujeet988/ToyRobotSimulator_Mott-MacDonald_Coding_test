@@ -20,7 +20,7 @@ namespace ToyRobotSimulator.Core.Models
             Facing = facing;
         }
 
-        public Position Clone()
+        public Position GetNextPosition()
         {
            return new Position(X, Y, Facing);
         }
