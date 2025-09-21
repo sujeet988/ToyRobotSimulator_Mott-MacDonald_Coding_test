@@ -34,7 +34,7 @@ namespace ToyRobotSimulator.Tests
             var table = new Table();
             var robot = new Robot(table);
             var outputs = new List<string>();
-            var parser = new CommandParser(robot, s => outputs.Add(s));
+            var parser = new CommandProcessor(robot, s => outputs.Add(s));
 
             var commands = new[] { "PLACE 0,0,NORTH", "LEFT", "REPORT" };
             foreach (var c in commands) parser.Parse(c)?.Execute();
@@ -48,7 +48,7 @@ namespace ToyRobotSimulator.Tests
             var table = new Table();
             var robot = new Robot(table);
             var outputs = new List<string>();
-            var parser = new CommandParser(robot, s => outputs.Add(s));
+            var parser = new CommandProcessor(robot, s => outputs.Add(s));
 
             var commands = new[] { "PLACE 1,2,EAST", "MOVE", "MOVE", "LEFT", "MOVE", "REPORT" };
             foreach (var c in commands) parser.Parse(c)?.Execute();

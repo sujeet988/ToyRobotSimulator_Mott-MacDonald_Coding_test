@@ -10,7 +10,7 @@ namespace ToyRobotSimulator.Client
         {
             ITable table = new Table(5, 5);
             IRobot robot = new Robot(table);
-            var parser = new CommandParser(robot, Console.WriteLine);
+            var parser = new CommandProcessor(robot, Console.WriteLine);
 
             IEnumerable<string> lines;
 
@@ -27,7 +27,11 @@ namespace ToyRobotSimulator.Client
             }
 
             foreach (var line in lines)
+            {
                 parser.Parse(line)?.Execute();
+
+            }
+                
         }
     }
 }
