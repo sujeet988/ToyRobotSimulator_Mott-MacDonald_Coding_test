@@ -36,13 +36,13 @@ dotnet run --project ToyRobotSimulator.Client
 ## Run Tests
 
 dotnet test
-# Example Scenarios
-Input : 
-PLACE 0,0,NORTH
-MOVE
-REPORT
-# Output 
-0,1,NORTH
+- **Example Scenarios
+Input : 			
+ PLACE 0,0,NORTH
+ MOVE
+ REPORT
+Output 
+ 0,1,NORTH
 
 ## Tech & Design
 
