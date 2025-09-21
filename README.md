@@ -33,6 +33,17 @@ The robot can be placed, moved, rotated, and report its position, while ensuring
 dotnet build
 dotnet run --project ToyRobotSimulator.Client
 
+## Run Tests
+
+dotnet test
+# Example Scenarios
+Input : 
+PLACE 0,0,NORTH
+MOVE
+REPORT
+# Output 
+0,1,NORTH
+
 ## Tech & Design
 
 - C# .NET 7
@@ -43,5 +54,5 @@ dotnet run --project ToyRobotSimulator.Client
 
 - Interfaces → IRobot, ITable, ICommand for testability and extensibility
 
-- Clean architecture → Core logic, Services, and CLI separated
+- Clean architecture → Core logic, Services, and Client separated
 
