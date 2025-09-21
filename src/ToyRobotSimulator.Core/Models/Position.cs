@@ -24,17 +24,5 @@ namespace ToyRobotSimulator.Core.Models
         {
            return new Position(X, Y, Facing);
         }
-
-        //public Position Move(Direction dir)
-        //{
-        //    return dir switch
-        //    {
-        //        Direction.North => this with { Y = Y + 1 },
-        //        Direction.South => this with { Y = Y - 1 },
-        //        Direction.East => this with { X = X + 1 },
-        //        Direction.West => this with { X = X - 1 },
-        //        _ => this
-        //    };
-        //}
     }
 }
