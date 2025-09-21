@@ -33,6 +33,11 @@ The robot can be placed, moved, rotated, and report its position, while ensuring
 dotnet build
 dotnet run --project ToyRobotSimulator.Client
 
+PARAMETERS:
+PLACE 0,0,NORTH
+MOVE
+REPORT
+
 ## Run Tests
 
 dotnet test
