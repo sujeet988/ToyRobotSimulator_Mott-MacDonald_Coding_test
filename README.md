@@ -29,7 +29,19 @@ The robot can be placed, moved, rotated, and report its position, while ensuring
 ---
 
 ## Run the App
-```sh
+
 dotnet build
 dotnet run --project ToyRobotSimulator.Client
+
+## Tech & Design
+
+- C# .NET 7
+
+- MSTest for testing
+
+- Command Pattern → each command is its own class (ICommand)
+
+- Interfaces → IRobot, ITable, ICommand for testability and extensibility
+
+- Clean architecture → Core logic, Services, and CLI separated
 
