@@ -20,3 +20,16 @@ The robot can be placed, moved, rotated, and report its position, while ensuring
 ---
 
 ## Project Structure
+
+- **Core** → Contracts (`IRobot`, `ITable`, `ICommand`), models (`Position`, `Direction`), and main logic (`Robot`, `Table`).  
+- **Services** → Implements commands (`MoveCommand`, `LeftCommand`, `RightCommand`, `PlaceCommand`, `ReportCommand`) and parsing (`CommandProcessor`).  
+- **Cli** → Console interface that reads and executes commands.  
+- **Tests** → Unit tests to validate all behaviors.  
+
+---
+
+## ▶️ Run the App
+```sh
+dotnet build
+dotnet run --project ToyRobotSimulator.Client
+
