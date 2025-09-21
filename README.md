@@ -37,11 +37,15 @@ dotnet run --project ToyRobotSimulator.Client
 
 **Case 1**
 
-**Input Paramters for Client Application:**
-PLACE 0,0,NORTH
-MOVE
-REPORT
-EXIT
+**Input:**
+PLACE 0,0,NORTH  
+MOVE  
+REPORT  
+EXIT  
+
+**Output:**
+0,1,NORTH  
+Exiting Toy Robot Simulator...
 
 ## Run Tests
 
