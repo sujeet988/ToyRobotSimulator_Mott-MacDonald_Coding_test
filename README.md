@@ -37,7 +37,7 @@ dotnet run --project ToyRobotSimulator.Client
 
 dotnet test
 - **Example Scenarios
-Input : 			
+**Input:** 			
  PLACE 0,0,NORTH
  MOVE
  REPORT
