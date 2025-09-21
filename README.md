@@ -69,3 +69,7 @@ dotnet test
 
 - Clean architecture → Core logic, Services, and Client separated
 
+## Author
+
+Created by: **Sujeet**
+
