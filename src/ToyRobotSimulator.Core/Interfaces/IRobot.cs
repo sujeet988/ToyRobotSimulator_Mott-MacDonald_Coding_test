@@ -9,12 +9,9 @@ namespace ToyRobotSimulator.Core.Interfaces
 {
     public interface IRobot
     {
+        Position Position { get; }
         bool IsPlaced { get; }
-        Position? Position { get; }
-        Direction? Facing { get; }
-
-
-        void Place(Position pos, Direction facing);
+        void Place(Position position, ITable table);
         void Move();
         void Left();
         void Right();

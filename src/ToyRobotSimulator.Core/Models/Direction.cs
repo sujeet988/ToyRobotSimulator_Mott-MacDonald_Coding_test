@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToyRobotSimulator.Core.Models
 {
+    // Represents direction the robot is facing
     public enum Direction
     {
         North,

@@ -11,74 +11,38 @@ namespace ToyRobotSimulator.Services.Services
 {
     public class CommandProcessor
     {
-        private readonly IRobot _robot;
-        private readonly Action<string> _output;
-
-        public CommandProcessor(IRobot robot, Action<string> output)
+        public static ICommand? Parse(string input)
         {
-            _robot = robot;
-            _output = output;
-        }
-
-        public ICommand? Parse(string input)
-        {
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                return null;
-            }
-
+            if (string.IsNullOrWhiteSpace(input)) return null;
             var parts = input.Trim().Split(' ');
-            var cmd = parts[0].ToUpperInvariant();
 
-            switch (cmd)
+            switch (parts[0].ToUpper())
             {
+                case "MOVE": return new MoveCommand();
+                case "LEFT": return new LeftCommand();
+                case "RIGHT": return new RightCommand();
+                case "REPORT": return new ReportCommand();
                 case "PLACE":
-                    if (parts.Length > 1)
-                        ParsePlace(parts[1]);
-                    break;
+                    if (parts.Length < 2)
+                    {
+                        return null;
+                    }
+                    var args = parts[1].Split(',');
+                    if (args.Length != 3)
+                    {
+                        return null;
+                    }
 
-                case "MOVE":
-                    new MoveCommand(_robot);
-                    break;
-
-                case "LEFT":
-                    new LeftCommand(_robot);
-                    break;
-
-                case "RIGHT":
-                     new RightCommand(_robot);
-                    break;
-
-                case "REPORT":
-                    new ReportCommand(_robot, _output);
-                    break;
-
+                    if (int.TryParse(args[0], out int x) &&
+                        int.TryParse(args[1], out int y) &&
+                        Enum.TryParse(args[2], true, out Direction facing))
+                    {
+                        return new PlaceCommand(x, y, facing);
+                    }
+                    return null;
                 default:
-
-                    break;
+                    return null;
             }
-        }
-
-        private ICommand? ParsePlace(string args)
-        {
-            var tokens = args.Split(',');
-            if (tokens.Length != 3) return null;
-
-            if (!int.TryParse(tokens[0], out var x))
-            {
-                return null;
-            }
-            if (!int.TryParse(tokens[1], out var y))
-            {
-                return null;
-            }
-
-            if (!Enum.TryParse<Direction>(tokens[2], true, out var dir))
-            {
-                return null;
-            }
-
-            return new PlaceCommand(_robot, new Position(x, y), dir);
         }
     }
 }

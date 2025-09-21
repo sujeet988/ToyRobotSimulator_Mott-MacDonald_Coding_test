@@ -9,6 +9,8 @@ namespace ToyRobotSimulator.Core.Interfaces
 {
     public interface ITable
     {
+        int Width { get; }
+        int Height { get; }
         bool IsValidPosition(Position pos);
     }
 }

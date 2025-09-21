@@ -3,58 +3,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ToyRobotSimulator.Services.Implementation;
-using ToyRobotSimulator.Services.Services;
+using ToyRobotSimulator.Core.Implementation;
+using ToyRobotSimulator.Core.Models;
 
 namespace ToyRobotSimulator.Tests
 {
     [TestClass]
     public class RobotTests
     {
-        [TestMethod]
-        public void Example_A()
+        private Table table;
+        private Robot robot;
+
+        [TestInitialize]
+        public void Setup()
         {
-            var table = new Table();
-            var robot = new Robot(table);
-            var outputs = new List<string>();
-            var parser = new CommandParser(robot, s => outputs.Add(s));
-
-            var commands = new[] { "PLACE 0,0,NORTH", "MOVE", "REPORT" };
-            foreach (var c in commands)
-            {
-                parser.Parse(c)?.Execute();
-            }
-
-            Assert.AreEqual("0,1,NORTH", outputs.Single());
+            table = new Table(5, 5);
+            robot = new Robot();
         }
 
         [TestMethod]
-        public void Example_B()
+        public void Place_ValidPosition_ShouldPlaceRobot()
         {
-            var table = new Table();
-            var robot = new Robot(table);
-            var outputs = new List<string>();
-            var parser = new CommandProcessor(robot, s => outputs.Add(s));
-
-            var commands = new[] { "PLACE 0,0,NORTH", "LEFT", "REPORT" };
-            foreach (var c in commands) parser.Parse(c)?.Execute();
-
-            Assert.AreEqual("0,0,WEST", outputs.Single());
+            robot.Place(new Position(0, 0, Direction.North), table);
+            Assert.IsTrue(robot.IsPlaced);
+            Assert.AreEqual("0,0,North", robot.Report());
         }
 
         [TestMethod]
-        public void Example_C()
+        public void Move_ValidMove_ShouldUpdatePosition()
         {
-            var table = new Table();
-            var robot = new Robot(table);
-            var outputs = new List<string>();
-            var parser = new CommandProcessor(robot, s => outputs.Add(s));
-
-            var commands = new[] { "PLACE 1,2,EAST", "MOVE", "MOVE", "LEFT", "MOVE", "REPORT" };
-            foreach (var c in commands) parser.Parse(c)?.Execute();
-
-            Assert.AreEqual("3,3,NORTH", outputs.Single());
+            robot.Place(new Position(0, 0, Direction.North), table);
+            robot.Move();
+            Assert.AreEqual("0,1,North", robot.Report());
         }
+
+        [TestMethod]
+        public void Move_InvalidMove_ShouldIgnore()
+        {
+            robot.Place(new Position(0, 4, Direction.North), table);
+            robot.Move();
+            Assert.AreEqual("0,4,N", robot.Report());
+        }
+
+        [TestMethod]
+        public void Left_ShouldRotateLeft()
+        {
+            robot.Place(new Position(0, 0, Direction.North), table);
+            robot.Left();
+            Assert.AreEqual("0,0,West", robot.Report());
+        }
+
+        [TestMethod]
+        public void Right_ShouldRotateRight()
+        {
+            robot.Place(new Position(0, 0, Direction.North), table);
+            robot.Right();
+            Assert.AreEqual("0,0,East", robot.Report());
+        }
+
     }
-
 }

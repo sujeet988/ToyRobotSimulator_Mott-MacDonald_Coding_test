@@ -10,20 +10,16 @@ namespace ToyRobotSimulator.Services.Commands
 {
     public class PlaceCommand : ICommand
     {
-        private readonly IRobot _robot;
-        private readonly Position _pos;
-        private readonly Direction _dir;
-
-        public PlaceCommand(IRobot robot, Position pos, Direction dir)
+        private readonly int _x, _y;
+        private readonly Direction _facing;
+        public PlaceCommand(int x, int y, Direction facing)
         {
-            _robot = robot;
-            _pos = pos;
-            _dir = dir;
+            _x = x; _y = y; _facing = facing;
         }
 
-        public void Execute()
+        public void Execute(IRobot robot, ITable table)
         {
-            _robot.Place(_pos, _dir);
+            robot.Place(new Position(_x, _y, _facing), table);
         }
     }
 }

@@ -7,26 +7,15 @@ using ToyRobotSimulator.Core.Interfaces;
 
 namespace ToyRobotSimulator.Services.Commands
 {
-    public class ReportCommand: ICommand
+    public class ReportCommand : ICommand
     {
 
-        private readonly IRobot _robot;
-        private readonly Action<string> _output;
 
-        public ReportCommand(IRobot robot, Action<string> output)
+        public void Execute(IRobot robot, ITable table)
         {
-            _robot = robot;
-            _output = output;
+            Console.WriteLine(robot.Report());
         }
 
-        public void Execute()
-        {
-            var report = _robot.Report();
-            if (!string.IsNullOrWhiteSpace(report))
-            {
-                _output(report);
-            }
-                
-        }
     }
 }
+

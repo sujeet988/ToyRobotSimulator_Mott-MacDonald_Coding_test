@@ -9,14 +9,7 @@ namespace ToyRobotSimulator.Services.Commands
 {
     public class LeftCommand : ICommand
     {
-        private readonly IRobot _robot;
-        public LeftCommand(IRobot robot)
-        {
-            _robot = robot;
-        }
-        public void Execute()
-        {
-            _robot.Left();
-        }
+
+        public void Execute(IRobot robot, ITable table) => robot.Left();
     }
 }

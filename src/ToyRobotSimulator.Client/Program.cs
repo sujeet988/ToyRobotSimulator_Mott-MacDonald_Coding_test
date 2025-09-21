@@ -1,5 +1,5 @@
-﻿using ToyRobotSimulator.Core.Interfaces;
-using ToyRobotSimulator.Services.Implementation;
+﻿using ToyRobotSimulator.Core.Implementation;
+using ToyRobotSimulator.Core.Interfaces;
 using ToyRobotSimulator.Services.Services;
 
 namespace ToyRobotSimulator.Client
@@ -8,30 +8,36 @@ namespace ToyRobotSimulator.Client
     {
         static void Main(string[] args)
         {
+            // Create a 5x5 table
             ITable table = new Table(5, 5);
-            IRobot robot = new Robot(table);
-            var parser = new CommandProcessor(robot, Console.WriteLine);
 
-            IEnumerable<string> lines;
+            // Create the robot (initially not placed)
+            IRobot robot = new Robot();
 
-            if (args.Length > 0 && File.Exists(args[0]))
-                lines = File.ReadAllLines(args[0]);
-            else
+            Console.WriteLine("Toy Robot Simulator");
+            Console.WriteLine("Enter commands (PLACE X,Y,F | MOVE | LEFT | RIGHT | REPORT). Type EXIT to quit.");
+            Console.WriteLine();
+
+            // Infinite loop to accept commands until user types EXIT
+            while (true)
             {
-                Console.WriteLine("Enter commands (empty line to finish):");
-                var input = new List<string>();
-                string? line;
-                while (!string.IsNullOrEmpty(line = Console.ReadLine()))
-                    input.Add(line);
-                lines = input;
+                Console.Write("> "); // show prompt
+                string? input = Console.ReadLine();
+
+                // If no input or user typed EXIT → stop program
+                if (string.IsNullOrWhiteSpace(input) || input.ToUpper() == "EXIT")
+                    break;
+
+                // Parse user input into a command object (Command Pattern)
+                var command = CommandProcessor.Parse(input);
+
+                // If valid command, execute it against the robot + table
+                command?.Execute(robot, table);
             }
 
-            foreach (var line in lines)
-            {
-                parser.Parse(line)?.Execute();
 
-            }
-                
         }
+
     }
+    
 }

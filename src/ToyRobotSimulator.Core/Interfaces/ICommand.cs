@@ -8,6 +8,6 @@ namespace ToyRobotSimulator.Core.Interfaces
 {
     public interface ICommand
     {
-        void Execute();
+        void Execute(IRobot robot, ITable table);
     }
 }
