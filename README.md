@@ -33,7 +33,7 @@ The robot can be placed, moved, rotated, and report its position, while ensuring
 dotnet build
 dotnet run --project ToyRobotSimulator.Client
 
-##  Example Scenarios AND passing paramters to console
+##  Example Scenarios And  passing paramters to console
 
 **Case 1**
 
@@ -45,7 +45,6 @@ EXIT
 
 **Output:**
 0,1,NORTH  
-Exiting Toy Robot Simulator...
 
 ## Run Tests
 
